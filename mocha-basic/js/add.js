@@ -3,3 +3,7 @@ function add(num1, num2) {
     num2 = (typeof num2 !== 'number') ? 0 : parseInt(num2, 10);
     return num1 + num2;
 }
+
+var module = module || {};
+if (module && module.exports)
+    module.exports = add;

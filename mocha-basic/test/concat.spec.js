@@ -1,13 +1,24 @@
-var expect = chai.expect;
-var should = chai.should();
-describe('Test concat function', function() {
-    it('test simple concat basic', function () {
-        var result = concat('hello', 'world');
-        result.should.be.equal('helloworld');
+(function (isNode) {
+    var chai, concat;
+    if (isNode) {
+        chai = require('chai');
+        concat = require('../js/concat.js');
+    } else {
+        chai = window.chai;
+        concat = window.concat;
+    }
+
+    chai.should();
+    describe('Test concat function', function() {
+        it('test simple concat basic', function () {
+            var result = concat('hello', 'world');
+            result.should.be.equal('helloworld');
+        });
+
+        it('concat with a number', function () {
+            var result = concat(2, 30);
+            result.should.be.equal('230');
+        })
     });
 
-    it('concat with a number', function () {
-        var result = concat(2, 30);
-        result.should.be.equal('230');
-    })
-});
+}(typeof module !== 'undefined' && module.exports));
